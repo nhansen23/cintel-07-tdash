@@ -81,7 +81,7 @@ with ui.layout_column_wrap(fill=False):
 # Build out the chart 
 with ui.layout_columns():
     with ui.card(full_screen=True):
-        ui.card_header("Bill Length and Depth", class_= "text-info")
+        ui.card_header("Bill Length and Depth", class_="p-3 mb-2 bg-secondary text-white")
      # Comment out the original plot
      #   @render.plot
      #   def length_depth():
@@ -104,7 +104,7 @@ with ui.layout_columns():
 
     # Build out the data table
     with ui.card(full_screen=True):
-        ui.card_header("Penguin Data", class_= "text-info")
+        ui.card_header("Penguin Data", class_="p-3 mb-2 bg-secondary text-white")
 
         @render.data_frame
         def summary_statistics():
