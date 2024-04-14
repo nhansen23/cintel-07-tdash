@@ -7,9 +7,10 @@ import palmerpenguins
 
 df = palmerpenguins.load_penguins()
 
+# Page Layout
 ui.page_opts(title="Penguins Dashboard", fillable=True)
 
-
+# Setup up the sidebar with inputs and website links
 with ui.sidebar(title="Filter controls"):
     ui.input_slider("mass", "Mass", 2000, 6000, 6000)
     ui.input_checkbox_group(
@@ -47,7 +48,7 @@ with ui.sidebar(title="Filter controls"):
         target="_blank",
     )
 
-
+# Set up the layout of the data cards
 with ui.layout_column_wrap(fill=False):
     with ui.value_box(showcase=icon_svg("earlybirds")):
         "Number of penguins"
@@ -70,7 +71,7 @@ with ui.layout_column_wrap(fill=False):
         def bill_depth():
             return f"{filtered_df()['bill_depth_mm'].mean():.1f} mm"
 
-
+# Build out the chart 
 with ui.layout_columns():
     with ui.card(full_screen=True):
         ui.card_header("Bill Length and Depth", class_= "text-info")
@@ -84,6 +85,7 @@ with ui.layout_columns():
                 hue="species",
             )
 
+    # Build out the data table
     with ui.card(full_screen=True):
         ui.card_header("Penguin Data", class_= "text-info")
 
@@ -101,7 +103,7 @@ with ui.layout_columns():
 
 #ui.include_css(app_dir / "styles.css")
 
-
+# Create the reactive calc
 @reactive.calc
 def filtered_df():
     filt_df = df[df["species"].isin(input.species())]
