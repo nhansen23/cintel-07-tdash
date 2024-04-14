@@ -14,7 +14,7 @@ theme.sandstone
 df = palmerpenguins.load_penguins()
 
 # Page Layout
-ui.page_opts(title="Penguins - NH", fillable=True)
+ui.page_opts(title="Penguins Dashboard", fillable=True)
 
 # Setup up the sidebar with inputs and website links
 with ui.sidebar(title="Filter controls"):
@@ -71,7 +71,7 @@ with ui.layout_column_wrap(fill=False):
         def bill_length():
             return f"{filtered_df()['bill_length_mm'].mean():.1f} mm"
 
-    with ui.value_box(showcase=icon_svg("ruler-vertical"),theme="bg-blue"):
+    with ui.value_box(showcase=icon_svg("ruler-vertical"), theme="bg-blue"):
         "Average bill depth"
 
         @render.text
