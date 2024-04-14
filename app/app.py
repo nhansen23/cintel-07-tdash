@@ -3,7 +3,13 @@ from faicons import icon_svg
 
 from shiny import reactive
 from shiny.express import input, render, ui
+from shinywidgets import render_plotly
+from shinyswatch import theme
+import plotly.express as px
 import palmerpenguins 
+
+# Set Theme
+theme.sandstone
 
 df = palmerpenguins.load_penguins()
 
@@ -76,15 +82,25 @@ with ui.layout_column_wrap(fill=False):
 with ui.layout_columns():
     with ui.card(full_screen=True):
         ui.card_header("Bill Length and Depth", class_= "text-info")
-
-        @render.plot
-        def length_depth():
-            return sns.scatterplot(
-                data=filtered_df(),
-                x="bill_length_mm",
-                y="bill_depth_mm",
-                hue="species",
-            )
+     # Comment out the original plot
+     #   @render.plot
+     #   def length_depth():
+     #       return sns.scatterplot(
+     #           data=filtered_df(),
+     #           x="bill_length_mm",
+     #           y="bill_depth_mm",
+     #           hue="species",
+     #       )
+    
+     # Updating plot to interactive plotly   
+        @render_plotly
+        def hist():
+            df = filtered_df()
+            return px.histogram(
+                df,
+                x="species",
+                color="species",
+                )
 
     # Build out the data table
     with ui.card(full_screen=True):
