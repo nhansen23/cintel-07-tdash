@@ -57,7 +57,7 @@ with ui.sidebar(title="Filter controls"):
 
 # Set up the layout of the data cards
 with ui.layout_column_wrap(fill=False):
-    with ui.value_box(showcase=icon_svg("earlybirds"),theme="bg-blue"):
+    with ui.value_box(showcase=icon_svg("earlybirds"), theme="bg-blue"):
         "Number of penguins"
 
         @render.text
