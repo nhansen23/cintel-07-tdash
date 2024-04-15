@@ -14,7 +14,7 @@ theme.sandstone
 df = palmerpenguins.load_penguins()
 
 # Page Layout
-ui.page_opts(title="Penguins Dashboard", fillable=True)
+ui.page_opts(title="My Penguins Dashboard", fillable=True)
 
 # Setup up the sidebar with inputs and website links
 with ui.sidebar(title="Filter controls"):
