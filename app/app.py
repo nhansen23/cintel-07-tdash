@@ -3,7 +3,7 @@ from faicons import icon_svg
 
 from shiny import reactive
 from shiny.express import input, render, ui
-from shinywidgets import render_plotly
+from shinywidgets import render_widget
 from shinyswatch import theme
 import plotly.express as px
 import palmerpenguins 
@@ -93,7 +93,7 @@ with ui.layout_columns():
      #       )
     
      # Updating plot to interactive plotly   
-        @render_plotly
+        @render_widget
         def hist():
             df = filtered_df()
             return px.histogram(
